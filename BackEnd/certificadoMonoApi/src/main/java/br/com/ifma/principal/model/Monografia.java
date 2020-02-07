@@ -13,23 +13,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+
 @Entity
+@Table(name = "monografia")
 public class Monografia implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
+	@NotNull
 	private String tema;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy hh:mm")
 	private LocalDateTime dataDefesa;
 	
+	@NotNull
 	private String local;
 	
 	@Enumerated(EnumType.STRING)
@@ -57,7 +63,7 @@ public class Monografia implements Serializable {
 	
 	public void setBanca(Banca banca) {this.banca = banca;}
 	
-	public Long getId() {return id;}
+	public Integer getId() {return id;}
 
     public String getLocal() {return this.local;}
     
@@ -93,11 +99,4 @@ public class Monografia implements Serializable {
 		Monografia other = (Monografia) obj;
 		return Objects.equals(id, other.id) && Objects.equals(tema, other.tema);
 	}
-	
-	
-	
-	
-	
-	
-
 }

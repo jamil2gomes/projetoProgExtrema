@@ -11,17 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "aluno")
 public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
+	@NotEmpty
 	private String nome;
 	
 	@JsonIgnore@ManyToOne @JoinColumn(name = "curso_id")
@@ -30,6 +34,7 @@ public class Aluno implements Serializable {
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "aluno")
 	private Monografia monografia;
+		
 	
 	public Aluno() {}
 
@@ -42,7 +47,7 @@ public class Aluno implements Serializable {
 	
 	public void setMonografia(Monografia monografia) {this.monografia = monografia;}
 	
-	public Long getId() {return id;}
+	public Integer getId() {return id;}
 
 	public String getNome() {return nome;}
 

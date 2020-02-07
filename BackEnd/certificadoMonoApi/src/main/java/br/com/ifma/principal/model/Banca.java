@@ -14,16 +14,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
+@Table(name = "banca")
 public class Banca implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFormacao;
@@ -36,6 +39,7 @@ public class Banca implements Serializable {
 	@OneToMany(mappedBy = "id.banca")
 	private List<ProfessorBanca> bancaProfessor = new ArrayList<>();
 	
+	
 	public Banca() {}
 
 	public Banca(LocalDate dataFormacao, Monografia monografia) {
@@ -45,7 +49,7 @@ public class Banca implements Serializable {
 	
 	public List<ProfessorBanca> getBancaProfessor() {return bancaProfessor;}
 
-	public Long getId() {return id;}
+	public Integer getId() {return id;}
 
 	public LocalDate getDataFormacao() {return dataFormacao;}
 
@@ -69,11 +73,4 @@ public class Banca implements Serializable {
 		Banca other = (Banca) obj;
 		return Objects.equals(id, other.id) && Objects.equals(monografia, other.monografia);
 	}
-	
-	
-	
-	 
-	
-	
-
 }

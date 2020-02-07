@@ -10,32 +10,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
+
 
 @Entity
+@Table(name = "professor")
 public class Professor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
+	@NotNull
 	private String nome;
-	
-	public Professor() {}
-	
-	public Professor(String nome) {this.nome = nome;}
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "id.professor")
 	private List<ProfessorBanca> professorBanca = new ArrayList<>();
-
-
+	
+	public Professor() {}
+	
 	public String getNome() {return nome;}
 
 	public void setNome(String nome) {this.nome = nome;}
 	
-	public Long getId() {return id;}
+	public Integer getId() {return id;}
 	
 	public List<ProfessorBanca> getProfessorBanca() {return professorBanca;}
 
@@ -53,5 +55,5 @@ public class Professor implements Serializable {
 		Professor other = (Professor) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
-	
+
 }

@@ -5,20 +5,27 @@ import java.util.Objects;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 @Entity
+@Table(name = "professor_banca")
 public class ProfessorBanca implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
 	@EmbeddedId
 	private ProfessorBancaPK id = new ProfessorBancaPK();
+	@Min(value = 0)
 	private double nota;
+	@NotNull
 	private boolean orientador;
 	
-	public ProfessorBanca() {}
+public ProfessorBanca() {}
 	
     
     
@@ -64,6 +71,5 @@ public class ProfessorBanca implements Serializable {
 		return Objects.equals(id, other.id);
 	}
     
-    
-
+	   
 }

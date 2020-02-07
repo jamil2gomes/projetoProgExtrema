@@ -11,24 +11,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
+
+import lombok.Data;
+
 @Entity
+@Table(name = "curso")
 public class Curso implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
+	
+	@NotNull
 	private String nome;
 	
 	@JsonIgnore @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	private List<Aluno> alunos = new ArrayList<>();
-		
+	
 	public Curso() {}
 
 	public Curso(String nome) {this.nome = nome;}
 
-	public Long getId() {return id;}
+	public Integer getId() {return id;}
 
 	public String getNome() {return nome;}
 	
@@ -50,9 +58,5 @@ public class Curso implements Serializable {
 		Curso other = (Curso) obj;
 		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
 	}
-	
-	
-	
-	
-	
+			
 }
