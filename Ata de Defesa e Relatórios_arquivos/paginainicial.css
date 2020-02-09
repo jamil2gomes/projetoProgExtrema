@@ -1,0 +1,10 @@
+.texto {
+    text-indent: 50px;
+}
+
+#campo_buscar {
+    width: 50%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -7,22 +7,22 @@ function getApi() {
         .then(function(response) {
             var objects = JSON.parse(response);
 
-            document.getElementById("dia").value = objects.dataDefesa.substring(0, 2)
-            document.getElementById("mes").value = formataMes(objects.dataDefesa.substring(3, 5))
-            document.getElementById("ano").value = objects.dataDefesa.substring(6, 10)
-            document.getElementById("horario").value = objects.dataDefesa.substring(11)
-            document.getElementById("aluno").value = objects.aluno.nome;
-            document.getElementById("temaMono").value = objects.tema;
-            document.getElementById("professores").value = objects.banca.bancaProfessor[0].id.professor.nome + ", " + objects.banca.bancaProfessor[1].id.professor.nome + ", " + objects.banca.bancaProfessor[2].id.professor.nome;
-            document.getElementById("prof1").value = objects.banca.bancaProfessor[0].id.professor.nome;
-            document.getElementById("prof2").value = objects.banca.bancaProfessor[1].id.professor.nome;
-            document.getElementById("prof3").value = objects.banca.bancaProfessor[2].id.professor.nome;
-            document.getElementById("nota1").value = objects.banca.bancaProfessor[0].nota;
-            document.getElementById("nota2").value = objects.banca.bancaProfessor[1].nota;
-            document.getElementById("nota3").value = objects.banca.bancaProfessor[2].nota;
-            document.getElementById("media").value = ((objects.banca.bancaProfessor[0].nota + objects.banca.bancaProfessor[1].nota + objects.banca.bancaProfessor[2].nota) / 3).toFixed(2);
-            document.getElementById("situacao").value = objects.situacao
-            document.getElementById("profOrientador").value = objects.banca.bancaProfessor[0].id.professor.nome;
+            document.getElementById("dia").innerHTML = objects.dataDefesa.substring(0, 2)
+            document.getElementById("mes").innerHTML = formataMes(objects.dataDefesa.substring(3, 5))
+            document.getElementById("ano").innerHTML = objects.dataDefesa.substring(6, 10)
+            document.getElementById("horario").innerHTML = objects.dataDefesa.substring(11)
+            document.getElementById("aluno").innerHTML = objects.aluno.nome;
+            document.getElementById("temaMono").innerHTML = objects.tema;
+            document.getElementById("professores").innerHTML = objects.banca.bancaProfessor[0].id.professor.nome + ", " + objects.banca.bancaProfessor[1].id.professor.nome + ", " + objects.banca.bancaProfessor[2].id.professor.nome;
+            document.getElementById("prof1").innerHTML = objects.banca.bancaProfessor[0].id.professor.nome;
+            document.getElementById("prof2").innerHTML = objects.banca.bancaProfessor[1].id.professor.nome;
+            document.getElementById("prof3").innerHTML = objects.banca.bancaProfessor[2].id.professor.nome;
+            document.getElementById("nota1").innerHTML = objects.banca.bancaProfessor[0].nota.toFixed(2);
+            document.getElementById("nota2").innerHTML = objects.banca.bancaProfessor[1].nota.toFixed(2);
+            document.getElementById("nota3").innerHTML = objects.banca.bancaProfessor[2].nota.toFixed(2);
+            document.getElementById("media").innerHTML = ((objects.banca.bancaProfessor[0].nota + objects.banca.bancaProfessor[1].nota + objects.banca.bancaProfessor[2].nota) / 3).toFixed(2);
+            document.getElementById("situacao").innerHTML = objects.situacao
+            document.getElementById("profOrientador").innerHTML = objects.banca.bancaProfessor[0].id.professor.nome;
 
         })
         .catch(function(error) {

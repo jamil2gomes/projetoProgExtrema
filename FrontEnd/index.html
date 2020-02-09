@@ -7,11 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <link rel="stylesheet" href="css/paginainicial.css">
 </head>
-
-
 
 <body>
 
@@ -21,63 +18,52 @@
             <input class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="getApi()" value="Buscar">
         </form>
 
-
-
-        <button class="my-2 my-lg-0 ml-auto btn btn-outline-primary btn-md my-2 my-sm-0 ml-3" type="submit">Imprimir</button>
+        <a href="#" class="my-2 my-lg-0 ml-auto btn btn-outline-primary btn-md my-2 my-sm-0 ml-3" onclick="doCapture()">Download PDF</a>
 
     </nav>
 
-    <div class="container  h-100 text-center">
+    <div style="width: 100vh;" class="container text-center align-items-center" id="HTMLtoPDF">
 
+        <img id="brasao" src="img/brasaoIcone.png" alt="brasao" class="rounded mt-2">
 
-        <img src="img/brasaoIcone.png" alt="brasao" class="rounded mt-2">
-        <div>
-            <p class="titulo"><b>INSTITUTO FEDERAL DO MARANHÃO</BR>
-               DIRETORIA DE ENSINO SUPERIOR</b></p>
-        </div>
-        <br>
-        <div>
+        <p class="titulo"><b>INSTITUTO FEDERAL DO MARANHÃO</BR>
+               DIRETORIA DE ENSINO SUPERIOR</b></p><br>
 
-            <p class="text-justify text-right">Ata de defesa de Monografia<br> do Curso de Sistemas de Informação</p>
+        <p class="text-justify text-right">Ata de defesa de Monografia<br> do Curso de Sistemas de Informação</p>
 
-            <p class="text-justify texto">
-                Aos <input size="3" type="text" id="dia" readonly>dias de do mês de <input type="text" id="mes" readonly> do ano <input size="5" type="text" id="ano" readonly>, às <input size="5" type="text" id="horario" readonly>, nas dependências do
-                Instituto Federal de Educação, Ciência e Tecnologia do Maranhão - Campus Monte Castelo , compareceu o(a) acadêmico(a) <input type="text" size="53" id="aluno" readonly> para apresentar sua Monografia de Conclusão de Curso, versando sobre
-                o Tema <input type="text" size="53" id="temaMono" readonly>perante a Banca Examinadora pela Portaria nº 1234567 composta pelos Professores <input size="54" type="text" id="professores" readonly>. Procedida a apresentação da, o (a) aluno
-                (a) foi aguido pelos examinadores que lhe atribuíram-lhes as seguintes notas:<br>
-                <div class="text-left">
-                    <p>Professor (a): <input type="text" size="80" id="prof1" readonly>Nota: <input type="text" id="nota1" readonly></p>
-                    <p>Professor (a): <input type="text" size="80" id="prof2" readonly>Nota: <input type="text" id="nota2" readonly></p>
-                    <p>Professor (a): <input type="text" size="80" id="prof3" readonly>Nota: <input type="text" id="nota3" readonly></p>
-                </div>
-            </p>
-            <p class="text-justify texto">
-                A média aritmética resultante das notas atribuídas conferiu ao aluno (a) média <input size="5" type="text" id="media" readonly>send o, portanto, o (a) aluno (a) considerado,<input type="text" size="15" id="situacao" readonly>. E como nada
-                mais houvesse a tratar , foram encerrados os trabalhos e EU,<input type="text" size="80" id="profOrientador" readonly>membro da Banca Examinadora lavrei a presente Ata que, lida e achada conforme vai assinada por mim e pelos demais membros
-                da Comissão Examinadora.
-            </p>
-
-            <div class="text-right">
-                <p>São Luís (MA), <span id="datetime"></span></p>
-                <br>
-
+        <p class="text-justify texto">
+            Aos <span size="3" type="text" id="dia"></span> dias de do mês de <span size="3" type="text" id="mes"></span> do ano <span size="3" type="text" id="ano"></span>, às <span size="3" type="text" id="horario"></span>, nas dependências do Instituto
+            Federal de Educação, Ciência e Tecnologia do Maranhão - Campus Monte Castelo , compareceu o(a) acadêmico(a) <span size="3" type="text" id="aluno"></span> para apresentar sua Monografia de Conclusão de Curso, versando sobre o Tema
+            <span size="3" type="text" id="temaMono"></span> perante a Banca Examinadora pela Portaria nº 1234567 composta pelos Professores <span size="3" type="text" id="professores"></span>. Procedida a apresentação da, o (a) aluno (a) foi aguido pelos
+            examinadores que lhe atribuíram-lhes as seguintes notas:<br>
+            <div class="text-left">
+                <p>Professor (a): <span size="3" type="text" id="prof1"></span> Nota: <span size="3" type="text" id="nota1"></span></p>
+                <p>Professor (a): <span size="3" type="text" id="prof2"></span> Nota: <span size="3" type="text" id="nota2"></span></p>
+                <p>Professor (a): <span size="3" type="text" id="prof3"></span> Nota: <span size="3" type="text" id="nota3"></span></p>
             </div>
+        </p>
+        <p class="text-justify texto">
+            A média aritmética resultante das notas atribuídas conferiu ao aluno (a) média <span size="3" type="text" id="media"></span> sendo, portanto, o (a) aluno (a) considerado, <span size="3" type="text" id="situacao"></span>. E como nada mais houvesse
+            a tratar , foram encerrados os trabalhos e EU, <span size="3" type="text" id="profOrientador"></span> membro da Banca Examinadora lavrei a presente Ata que, lida e achada conforme vai assinada por mim e pelos demais membros da Comissão Examinadora.
+        </p>
+
+        <div class="text-right">
+            <p>São Luís (MA), <span id="datetime"></span></p><br>
             <div class="text-left">
                 <p>1º Membro: _______________________________________________________</p>
                 <p>2º Membro: _______________________________________________________</p>
                 <p>3º Membro: _______________________________________________________</p>
             </div>
-        </div><br><br><br><br>
-    </div>
-    </div>
+        </div>
 
-
-    <script src="js/arquivo.js"></script>
-    <script src="js/consuming_api_rest.js"></script>
-    <script src="js/fill_inputs.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="js/jspdf.js"></script>
+        <script src="js/jquery-2.1.3.js"></script>
+        <script src="js/pdfFromHTML.js"></script>
+        <script src="js/arquivo.js"></script>
+        <script src="js/consuming_api_rest.js"></script>
+        <script src="js/fill_inputs.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </body>
 
