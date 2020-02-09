@@ -12,8 +12,8 @@ public class MonografiaService {
 	@Autowired
 	private MonografiaRepository monoRepository;
 	
-	public Monografia buscaPor(String aluno, String tema) {
-		return monoRepository.encontraMonoPor(aluno, tema);
+	public Monografia buscaPor(String tema) {
+		return monoRepository.encontraMonoPor(tema);
 	}
 
 }

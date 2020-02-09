@@ -17,8 +17,14 @@ public class MonoController {
 	@Autowired
 	private MonografiaService monoService;
 	
-	@GetMapping("/{aluno}/{tema}")
-	public ResponseEntity<Monografia>buscaMonoPor(@PathVariable String aluno, @PathVariable String tema){
-		return ResponseEntity.ok().body(monoService.buscaPor(aluno, tema));
+	@GetMapping("/{tema}")
+	public ResponseEntity<Monografia>buscaMonoPor(@PathVariable String tema){
+		
+		return ResponseEntity.ok()
+				.header("Access-Control-Allow-Origin", "*")
+	            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+	            .header("Access-Control-Allow-Credentials", "true")
+	            .header("crossDomain", "true")
+	            .body(monoService.buscaPor(tema));
 	}
 }
