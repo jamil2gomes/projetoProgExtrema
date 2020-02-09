@@ -36,18 +36,20 @@
             <p class="text-justify text-right">Ata de defesa de Monografia<br> do Curso de Sistemas de Informação</p>
 
             <p class="text-justify texto">
-                Aos <input size="3" type="text" readonly>dias de do mês de <input type="text" readonly> do ano <input size="5" type="text" readonly>, às <input size="5" type="text" readonly>, nas dependências do Instituto Federal de Educação, Ciência
-                e Tecnologia do Maranhão - Campus Monte Castelo ,compareceu o(a) acadêmico(a) <input type="text" size="53" readonly> para apresentar sua Monografia de Conclusão de Curso, versando sobre o Tema <input type="text" size="53" readonly>perante
-                a Banca Examinadora pela Portaria nº 1234567 composta pelos Professores <input size="54" type="text" readonly>. Procedida a apresentação da, o (a) aluno (a) foi aguido pelos examinadores que lhe atribuíram-lhes as seguintes notas:<br>
+                Aos <input size="3" type="text" id="dia" readonly>dias de do mês de <input type="text" id="mes" readonly> do ano <input size="5" type="text" id="ano" readonly>, às <input size="5" type="text" id="horario" readonly>, nas dependências do
+                Instituto Federal de Educação, Ciência e Tecnologia do Maranhão - Campus Monte Castelo ,compareceu o(a) acadêmico(a) <input type="text" size="53" id="aluno" readonly> para apresentar sua Monografia de Conclusão de Curso, versando sobre
+                o Tema <input type="text" size="53" id="temaMono" readonly>perante a Banca Examinadora pela Portaria nº 1234567 composta pelos Professores <input size="54" type="text" id="professores" readonly>. Procedida a apresentação da, o (a) aluno
+                (a) foi aguido pelos examinadores que lhe atribuíram-lhes as seguintes notas:<br>
                 <div class="text-left">
-                    <p>Professor (a): <input type="text" size="80" readonly>Nota: <input type="text" readonly></p>
-                    <p>Professor (a): <input type="text" size="80" readonly>Nota: <input type="text" readonly></p>
-                    <p>Professor (a): <input type="text" size="80" readonly>Nota: <input type="text" readonly></p>
+                    <p>Professor (a): <input type="text" size="80" id="prof1" readonly>Nota: <input type="text" id="nota1" readonly></p>
+                    <p>Professor (a): <input type="text" size="80" id="prof2" readonly>Nota: <input type="text" id="nota2" readonly></p>
+                    <p>Professor (a): <input type="text" size="80" id="prof3" readonly>Nota: <input type="text" id="nota3" readonly></p>
                 </div>
             </p>
             <p class="text-justify texto">
-                A média aritmética resultante das notas atribuídas conferiu ao aluno (a) média <input size="5" type="text" readonly>sendo, portanto, o (a) aluno (a) considerado,<input type="text" size="15" readonly>. E como nada mais houvesse a tratar
-                , foram encerrados os trabalhos e EU,<input type="text" size="80" readonly>membro da Banca Examinadora lavrei a presente Ata que, lida e achada conforme vai assinada por mim e pelos demais membros da Comissão Examinadora.
+                A média aritmética resultante das notas atribuídas conferiu ao aluno (a) média <input size="5" type="text" id="media" readonly>sendo, portanto, o (a) aluno (a) considerado,<input type="text" size="15" id="situacao" readonly>. E como nada
+                mais houvesse a tratar , foram encerrados os trabalhos e EU,<input type="text" size="80" id="prof1" readonly>membro da Banca Examinadora lavrei a presente Ata que, lida e achada conforme vai assinada por mim e pelos demais membros da Comissão
+                Examinadora.
             </p>
 
             <div class="text-right">
@@ -62,11 +64,29 @@
             </div>
         </div><br><br><br><br>
 
-        <button type="button" class="btn btn-primary">Imprimir</button>
+        <button type="button" class="btn btn-primary" onclick="getApi()">Imprimir</button>
     </div>
     </div>
+    <script>
+        function getApi() {
+
+            myRequest("")
+                .then(function(response) {
+                    var objects = JSON.parse(response);
+                    var result = objects.results;
+                    for (var i = 0; i < result.length; i++) {
+                        // document.getElementById("aluno").value = result[i].name;
+                    }
+
+                })
+                .catch(function(error) {
+                    console.warn(error);
+                });
+        }
+    </script>
 
     <script src="js/arquivo.js"></script>
+    <script src="js/consuming_api_rest.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
